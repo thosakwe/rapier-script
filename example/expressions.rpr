@@ -1,0 +1,39 @@
+fn main(argv) {
+    // Strings
+    const greeting = "Hello, world!"
+
+    // Object literals
+    const query = { foo: "bar" }
+
+    // Array literals
+    const array = [1, get "http://foo.bar/baz", { foo: "bar" }, foo]
+
+    // GET request
+    const getRequest = get "http://example.com"
+    const connectRequest = open("CONNECT", "")
+
+    // Attach query params
+    delete "http://example.com/foo" ? { id: 1337 }
+
+    // Attach user agents, request bodies...
+    post "http://example.com/submit" + UserAgent.Safari + { foo: "bar" }
+
+    // Attach headers
+    get "http://example.com" * { Accept: "application/json" }
+
+    // Run another task. Tasks are hoisted and can be declared anywhere.
+    greet("world")
+
+    // Anonymous functions, too
+    run("foo", (name) {
+        print("${name} bar")
+    })
+
+    // Members
+    getRequest.httpVersion = 1.1
+}
+
+// Tasks can be expression lambdas :)
+fn greet(name) => get "http://example.com/greet" ? { name }
+
+fn run(name, func) => func(name)

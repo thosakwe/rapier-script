@@ -1,0 +1,6 @@
+fn userAgent() {
+    const agent = UserAgent.Chrome
+
+    // Pretend to be IE8
+    get "http://example.com" + UserAgent.IE8
+}

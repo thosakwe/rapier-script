@@ -1,0 +1,3 @@
+fn search(query) {
+    let request = get "http://google.com" ? { query }
+}
