@@ -3,14 +3,14 @@
 // The IDE would display all fetched repos in a clean tree view :)
 
 fn fetchRepos(username:string) {
-  let repos = []
-  let response = send("https://github.com/${username}?tab=repositories")
+  const repos = []
+  const response = send("https://github.com/${username}?tab=repositories")
   
   if (response.statusCode == 200) {
-    let dom = response.dom()
+    const dom = response.dom()
     
     for (listName: dom.$("h3.repo-list.name")) {
-      let link = listName.children[0]
+      const link = listName.children[0]
       repos.add({
         link: link.attr("href"),
         name: link.innerText
