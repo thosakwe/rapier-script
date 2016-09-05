@@ -1,0 +1,47 @@
+{
+  "name": "rapier-script",
+  "version": "1.0.0-dev",
+  "description": "DSL for writing HTTP clients.",
+  "main": "lib/index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "postinstall": "npm run compile",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thosakwe/rapier-script.git"
+  },
+  "keywords": [
+    "rapier",
+    "rapier-script",
+    "http",
+    "bot"
+  ],
+  "author": "Tobe O <thosakwe@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thosakwe/rapier-script/issues"
+  },
+  "homepage": "https://github.com/thosakwe/rapier-script#readme",
+  "dependencies": {
+    "antlr4": "^4.5.3",
+    "argparse": "^1.0.7",
+    "babel-polyfill": "^6.13.0",
+    "babel-register": "^6.14.0",
+    "feathers": "^2.0.1",
+    "feathers-rest": "^1.4.4",
+    "feathers-socketio": "^1.4.1",
+    "socket.io": "^1.4.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.14.0",
+    "jshint": "^2.9.3",
+    "mocha": "^3.0.2"
+  }
+}
