@@ -1,14 +1,15 @@
+import Symbol from '../symbol';
 import RapierType from './type';
-import Types from './types';
+import * as Types from './types';
 
 /**
  * @property {RapierType} type
- * @property {Object.<string, RapierType>} members
+ * @property {Array.<Symbol>} members
  */
 export default class RapierObject {
     /**
      * @param {RapierType} type
-     * @param {Object.<string, RapierType>} members
+     * @param {Array.<Symbol>} members
      */
     constructor(type, members = {}) {
         this.type = type;

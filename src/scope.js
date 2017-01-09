@@ -50,10 +50,44 @@ export default class Scope {
         throw new Error(`Undefined symbol '${key}'.`);
     }
 
-    getExports() {
-        const exports = [];
+    /**
+     * Loads all symbols exported by this scope.
+     * @param {boolean} [importPrivate=false]
+     * @returns {Array.<Symbol>}
+     */
+    getExports(importPrivate = false) {
+        const exports = [], names = [];
+
+        /**
+         * @param scope {Scope}
+         */
+        function walk(scope) {
+            for (const symbol of scope.symbols) {
+                if ((importPrivate || symbol.name.indexOf('_') !== 0)
+                    && names.indexOf(symbol.name) === -1) {
+                    exports.push(symbol);
+                    names.push(symbol.name);
+                }
+            }
+
+            if (scope.parent)
+                walk(scope.parent);
+        }
 
         return exports;
+    }
+
+    /**
+     * Finds the root scope.
+     * @returns {Scope}
+     */
+    getRoot() {
+        let root = this;
+
+        while(root.parent)
+            root = root.parent;
+
+        return root;
     }
 
     /**
