@@ -51,7 +51,9 @@ STRING: '"' (ESCAPED | ~('\n'|'\r'))*? '"';
 fragment REGEX_FLAGS: 'g' | 'i' | 'm' | 'u' | 'y';
 REGEX_LITERAL: '/' ~'/'+ '/' REGEX_FLAGS*;
 
-compilationUnit: (functionDecl | (stmt SEMI?)+)*;
+compilationUnit: topLevel*;
+
+topLevel: (functionDecl | ((stmt SEMI?)+));
 
 block:
     CURLY_L (stmt SEMI?)* CURLY_R

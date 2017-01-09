@@ -1,4 +1,4 @@
-// Generated from src/grammar/RapierScript.g4 by ANTLR 4.5.3
+// Generated from RapierScript.g4 by ANTLR 4.6
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -222,36 +222,41 @@ RapierScriptLexer.STRING = 35;
 RapierScriptLexer.REGEX_LITERAL = 36;
 
 
-RapierScriptLexer.modeNames = [ "DEFAULT_MODE" ];
+RapierScriptLexer.prototype.modeNames = [ "DEFAULT_MODE" ];
 
-RapierScriptLexer.literalNames = [ null, null, null, "':'", "','", "'{'", 
-                                   "'}'", "'.'", "'='", "'-'", "'('", "')'", 
-                                   "';'", "'['", "']'", "'=>'", "'+'", "'?'", 
-                                   "'*'", "'const'", "'delete'", "'fn'", 
-                                   "'for'", "'get'", "'head'", "'let'", 
-                                   "'new'", "'patch'", "'post'", "'put'", 
-                                   "'ret'" ];
+RapierScriptLexer.prototype.literalNames = [ null, null, null, "':'", "','", 
+                                             "'{'", "'}'", "'.'", "'='", 
+                                             "'-'", "'('", "')'", "';'", 
+                                             "'['", "']'", "'=>'", "'+'", 
+                                             "'?'", "'*'", "'const'", "'delete'", 
+                                             "'fn'", "'for'", "'get'", "'head'", 
+                                             "'let'", "'new'", "'patch'", 
+                                             "'post'", "'put'", "'ret'" ];
 
-RapierScriptLexer.symbolicNames = [ null, "SL_CMT", "WS", "COLON", "COMMA", 
-                                    "CURLY_L", "CURLY_R", "DOT", "EQUALS", 
-                                    "MINUS", "PAREN_L", "PAREN_R", "SEMI", 
-                                    "SQUARE_L", "SQUARE_R", "ARROW", "PLUS", 
-                                    "QUESTION", "TIMES", "CONST", "DELETE", 
-                                    "FN", "FOR", "GET", "HEAD", "LET", "NEW", 
-                                    "PATCH", "POST", "PUT", "RET", "ID", 
-                                    "INT", "DOUBLE", "RAW_STRING", "STRING", 
-                                    "REGEX_LITERAL" ];
+RapierScriptLexer.prototype.symbolicNames = [ null, "SL_CMT", "WS", "COLON", 
+                                              "COMMA", "CURLY_L", "CURLY_R", 
+                                              "DOT", "EQUALS", "MINUS", 
+                                              "PAREN_L", "PAREN_R", "SEMI", 
+                                              "SQUARE_L", "SQUARE_R", "ARROW", 
+                                              "PLUS", "QUESTION", "TIMES", 
+                                              "CONST", "DELETE", "FN", "FOR", 
+                                              "GET", "HEAD", "LET", "NEW", 
+                                              "PATCH", "POST", "PUT", "RET", 
+                                              "ID", "INT", "DOUBLE", "RAW_STRING", 
+                                              "STRING", "REGEX_LITERAL" ];
 
-RapierScriptLexer.ruleNames = [ "SL_CMT", "WS", "COLON", "COMMA", "CURLY_L", 
-                                "CURLY_R", "DOT", "EQUALS", "MINUS", "PAREN_L", 
-                                "PAREN_R", "SEMI", "SQUARE_L", "SQUARE_R", 
-                                "ARROW", "PLUS", "QUESTION", "TIMES", "CONST", 
-                                "DELETE", "FN", "FOR", "GET", "HEAD", "LET", 
-                                "NEW", "PATCH", "POST", "PUT", "RET", "ID", 
-                                "NUM", "INT", "DOUBLE", "ESCAPED", "RAW_STRING", 
-                                "STRING", "REGEX_FLAGS", "REGEX_LITERAL" ];
+RapierScriptLexer.prototype.ruleNames = [ "SL_CMT", "WS", "COLON", "COMMA", 
+                                          "CURLY_L", "CURLY_R", "DOT", "EQUALS", 
+                                          "MINUS", "PAREN_L", "PAREN_R", 
+                                          "SEMI", "SQUARE_L", "SQUARE_R", 
+                                          "ARROW", "PLUS", "QUESTION", "TIMES", 
+                                          "CONST", "DELETE", "FN", "FOR", 
+                                          "GET", "HEAD", "LET", "NEW", "PATCH", 
+                                          "POST", "PUT", "RET", "ID", "NUM", 
+                                          "INT", "DOUBLE", "ESCAPED", "RAW_STRING", 
+                                          "STRING", "REGEX_FLAGS", "REGEX_LITERAL" ];
 
-RapierScriptLexer.grammarFileName = "RapierScript.g4";
+RapierScriptLexer.prototype.grammarFileName = "RapierScript.g4";
 
 
 

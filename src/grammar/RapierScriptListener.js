@@ -1,4 +1,4 @@
-// Generated from src/grammar/RapierScript.g4 by ANTLR 4.5.3
+// Generated from RapierScript.g4 by ANTLR 4.6
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -26,6 +26,15 @@ RapierScriptListener.prototype.enterCompilationUnit = function(ctx) {
 
 // Exit a parse tree produced by RapierScriptParser#compilationUnit.
 RapierScriptListener.prototype.exitCompilationUnit = function(ctx) {
+};
+
+
+// Enter a parse tree produced by RapierScriptParser#topLevel.
+RapierScriptListener.prototype.enterTopLevel = function(ctx) {
+};
+
+// Exit a parse tree produced by RapierScriptParser#topLevel.
+RapierScriptListener.prototype.exitTopLevel = function(ctx) {
 };
 
 
