@@ -50,6 +50,12 @@ export default class Scope {
         throw new Error(`Undefined symbol '${key}'.`);
     }
 
+    getExports() {
+        const exports = [];
+
+        return exports;
+    }
+
     /**
      * @param {string} key
      * @returns {Symbol}
