@@ -1,9 +1,9 @@
 /**
- * @property name {string}
+ * @property {string} name
  */
 export default class RapierType {
     /**
-     * @param name {string}
+     * @param {string} name
      */
     constructor(name) {
         this.name = name;

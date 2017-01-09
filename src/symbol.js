@@ -1,11 +1,18 @@
+import RapierObject from './analysis/object';
+
 /**
  * @export
  * @class Symbol
- * @property name {string}
- * @property value {object}
- * @property final {boolean}
+ * @property {string} name
+ * @property {RapierObject} value
+ * @property {boolean} final
  */
 export default class Symbol {
+    /**
+     * @param {string} name
+     * @param {RapierObject} value
+     * @param {boolean} [final=false]
+     */
     constructor(name, value, final = false) {
         this.name = name;
         this.value = value;
@@ -17,7 +24,7 @@ export default class Symbol {
     }
 
     /**
-     * @param value {object}
+     * @param {object} value
      */
     setValue(value) {
         if (this.final)

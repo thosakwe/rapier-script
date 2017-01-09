@@ -11,21 +11,39 @@ function RapierScriptListener() {
 RapierScriptListener.prototype = Object.create(antlr4.tree.ParseTreeListener.prototype);
 RapierScriptListener.prototype.constructor = RapierScriptListener;
 
-// Enter a parse tree produced by RapierScriptParser#requestMethod.
-RapierScriptListener.prototype.enterRequestMethod = function(ctx) {
-};
-
-// Exit a parse tree produced by RapierScriptParser#requestMethod.
-RapierScriptListener.prototype.exitRequestMethod = function(ctx) {
-};
-
-
 // Enter a parse tree produced by RapierScriptParser#compilationUnit.
 RapierScriptListener.prototype.enterCompilationUnit = function(ctx) {
 };
 
 // Exit a parse tree produced by RapierScriptParser#compilationUnit.
 RapierScriptListener.prototype.exitCompilationUnit = function(ctx) {
+};
+
+
+// Enter a parse tree produced by RapierScriptParser#importDecl.
+RapierScriptListener.prototype.enterImportDecl = function(ctx) {
+};
+
+// Exit a parse tree produced by RapierScriptParser#importDecl.
+RapierScriptListener.prototype.exitImportDecl = function(ctx) {
+};
+
+
+// Enter a parse tree produced by RapierScriptParser#StringSource.
+RapierScriptListener.prototype.enterStringSource = function(ctx) {
+};
+
+// Exit a parse tree produced by RapierScriptParser#StringSource.
+RapierScriptListener.prototype.exitStringSource = function(ctx) {
+};
+
+
+// Enter a parse tree produced by RapierScriptParser#GlobalSource.
+RapierScriptListener.prototype.enterGlobalSource = function(ctx) {
+};
+
+// Exit a parse tree produced by RapierScriptParser#GlobalSource.
+RapierScriptListener.prototype.exitGlobalSource = function(ctx) {
 };
 
 
@@ -191,6 +209,15 @@ RapierScriptListener.prototype.exitIdExpr = function(ctx) {
 };
 
 
+// Enter a parse tree produced by RapierScriptParser#QueryExpr.
+RapierScriptListener.prototype.enterQueryExpr = function(ctx) {
+};
+
+// Exit a parse tree produced by RapierScriptParser#QueryExpr.
+RapierScriptListener.prototype.exitQueryExpr = function(ctx) {
+};
+
+
 // Enter a parse tree produced by RapierScriptParser#RegexLiteralExpr.
 RapierScriptListener.prototype.enterRegexLiteralExpr = function(ctx) {
 };
@@ -206,15 +233,6 @@ RapierScriptListener.prototype.enterDictionaryLiteralExpr = function(ctx) {
 
 // Exit a parse tree produced by RapierScriptParser#DictionaryLiteralExpr.
 RapierScriptListener.prototype.exitDictionaryLiteralExpr = function(ctx) {
-};
-
-
-// Enter a parse tree produced by RapierScriptParser#BinaryExpr.
-RapierScriptListener.prototype.enterBinaryExpr = function(ctx) {
-};
-
-// Exit a parse tree produced by RapierScriptParser#BinaryExpr.
-RapierScriptListener.prototype.exitBinaryExpr = function(ctx) {
 };
 
 
@@ -245,15 +263,6 @@ RapierScriptListener.prototype.exitTypeExpr = function(ctx) {
 };
 
 
-// Enter a parse tree produced by RapierScriptParser#DoubleExpr.
-RapierScriptListener.prototype.enterDoubleExpr = function(ctx) {
-};
-
-// Exit a parse tree produced by RapierScriptParser#DoubleExpr.
-RapierScriptListener.prototype.exitDoubleExpr = function(ctx) {
-};
-
-
 // Enter a parse tree produced by RapierScriptParser#IndexerExpr.
 RapierScriptListener.prototype.enterIndexerExpr = function(ctx) {
 };
@@ -263,12 +272,21 @@ RapierScriptListener.prototype.exitIndexerExpr = function(ctx) {
 };
 
 
-// Enter a parse tree produced by RapierScriptParser#IntegerExpr.
-RapierScriptListener.prototype.enterIntegerExpr = function(ctx) {
+// Enter a parse tree produced by RapierScriptParser#ConcatExpr.
+RapierScriptListener.prototype.enterConcatExpr = function(ctx) {
 };
 
-// Exit a parse tree produced by RapierScriptParser#IntegerExpr.
-RapierScriptListener.prototype.exitIntegerExpr = function(ctx) {
+// Exit a parse tree produced by RapierScriptParser#ConcatExpr.
+RapierScriptListener.prototype.exitConcatExpr = function(ctx) {
+};
+
+
+// Enter a parse tree produced by RapierScriptParser#NumExpr.
+RapierScriptListener.prototype.enterNumExpr = function(ctx) {
+};
+
+// Exit a parse tree produced by RapierScriptParser#NumExpr.
+RapierScriptListener.prototype.exitNumExpr = function(ctx) {
 };
 
 
@@ -317,12 +335,30 @@ RapierScriptListener.prototype.exitNestedExpr = function(ctx) {
 };
 
 
+// Enter a parse tree produced by RapierScriptParser#SubtractExpr.
+RapierScriptListener.prototype.enterSubtractExpr = function(ctx) {
+};
+
+// Exit a parse tree produced by RapierScriptParser#SubtractExpr.
+RapierScriptListener.prototype.exitSubtractExpr = function(ctx) {
+};
+
+
 // Enter a parse tree produced by RapierScriptParser#CallExpr.
 RapierScriptListener.prototype.enterCallExpr = function(ctx) {
 };
 
 // Exit a parse tree produced by RapierScriptParser#CallExpr.
 RapierScriptListener.prototype.exitCallExpr = function(ctx) {
+};
+
+
+// Enter a parse tree produced by RapierScriptParser#TimesExpr.
+RapierScriptListener.prototype.enterTimesExpr = function(ctx) {
+};
+
+// Exit a parse tree produced by RapierScriptParser#TimesExpr.
+RapierScriptListener.prototype.exitTimesExpr = function(ctx) {
 };
 
 

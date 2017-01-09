@@ -12,14 +12,26 @@ function RapierScriptVisitor() {
 RapierScriptVisitor.prototype = Object.create(antlr4.tree.ParseTreeVisitor.prototype);
 RapierScriptVisitor.prototype.constructor = RapierScriptVisitor;
 
-// Visit a parse tree produced by RapierScriptParser#requestMethod.
-RapierScriptVisitor.prototype.visitRequestMethod = function(ctx) {
+// Visit a parse tree produced by RapierScriptParser#compilationUnit.
+RapierScriptVisitor.prototype.visitCompilationUnit = function(ctx) {
   return this.visitChildren(ctx);
 };
 
 
-// Visit a parse tree produced by RapierScriptParser#compilationUnit.
-RapierScriptVisitor.prototype.visitCompilationUnit = function(ctx) {
+// Visit a parse tree produced by RapierScriptParser#importDecl.
+RapierScriptVisitor.prototype.visitImportDecl = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by RapierScriptParser#StringSource.
+RapierScriptVisitor.prototype.visitStringSource = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by RapierScriptParser#GlobalSource.
+RapierScriptVisitor.prototype.visitGlobalSource = function(ctx) {
   return this.visitChildren(ctx);
 };
 
@@ -132,6 +144,12 @@ RapierScriptVisitor.prototype.visitIdExpr = function(ctx) {
 };
 
 
+// Visit a parse tree produced by RapierScriptParser#QueryExpr.
+RapierScriptVisitor.prototype.visitQueryExpr = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by RapierScriptParser#RegexLiteralExpr.
 RapierScriptVisitor.prototype.visitRegexLiteralExpr = function(ctx) {
   return this.visitChildren(ctx);
@@ -140,12 +158,6 @@ RapierScriptVisitor.prototype.visitRegexLiteralExpr = function(ctx) {
 
 // Visit a parse tree produced by RapierScriptParser#DictionaryLiteralExpr.
 RapierScriptVisitor.prototype.visitDictionaryLiteralExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
-// Visit a parse tree produced by RapierScriptParser#BinaryExpr.
-RapierScriptVisitor.prototype.visitBinaryExpr = function(ctx) {
   return this.visitChildren(ctx);
 };
 
@@ -168,20 +180,20 @@ RapierScriptVisitor.prototype.visitTypeExpr = function(ctx) {
 };
 
 
-// Visit a parse tree produced by RapierScriptParser#DoubleExpr.
-RapierScriptVisitor.prototype.visitDoubleExpr = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
 // Visit a parse tree produced by RapierScriptParser#IndexerExpr.
 RapierScriptVisitor.prototype.visitIndexerExpr = function(ctx) {
   return this.visitChildren(ctx);
 };
 
 
-// Visit a parse tree produced by RapierScriptParser#IntegerExpr.
-RapierScriptVisitor.prototype.visitIntegerExpr = function(ctx) {
+// Visit a parse tree produced by RapierScriptParser#ConcatExpr.
+RapierScriptVisitor.prototype.visitConcatExpr = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by RapierScriptParser#NumExpr.
+RapierScriptVisitor.prototype.visitNumExpr = function(ctx) {
   return this.visitChildren(ctx);
 };
 
@@ -216,8 +228,20 @@ RapierScriptVisitor.prototype.visitNestedExpr = function(ctx) {
 };
 
 
+// Visit a parse tree produced by RapierScriptParser#SubtractExpr.
+RapierScriptVisitor.prototype.visitSubtractExpr = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by RapierScriptParser#CallExpr.
 RapierScriptVisitor.prototype.visitCallExpr = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by RapierScriptParser#TimesExpr.
+RapierScriptVisitor.prototype.visitTimesExpr = function(ctx) {
   return this.visitChildren(ctx);
 };
 

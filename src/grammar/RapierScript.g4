@@ -3,67 +3,39 @@ grammar RapierScript;
 SL_CMT: '//' ~('\n')* -> channel(HIDDEN);
 WS: (' ' | '\n' | '\r' | '\r\n') -> skip;
 
-// Symbols
-COLON: ':';
-COMMA: ',';
-CURLY_L: '{';
-CURLY_R: '}';
-DOT: '.';
-EQUALS: '=';
-MINUS: '-';
-PAREN_L: '(';
-PAREN_R: ')';
-SEMI: ';';
-SQUARE_L: '[';
-SQUARE_R: ']';
-
-// Operators
-ARROW: '=>';
-PLUS: '+';
-QUESTION: '?';
-TIMES: '*';
-
 // Keywords
 CONST: 'const';
-DELETE: 'delete';
-FN: 'fn';
-FOR: 'for';
-GET: 'get';
-HEAD: 'head';
 LET: 'let';
-NEW: 'new';
-PATCH: 'patch';
-POST: 'post';
-PUT: 'put';
-RET: 'ret';
 
 ID: ('$' | [A-Za-z_]) ('$' | [A-Za-z0-9_])*;
 
-requestMethod: HEAD | GET | POST | PUT | PATCH | DELETE;
-
 // Expression literals
-fragment NUM: [0-9]+;
-INT: MINUS? NUM;
-DOUBLE: MINUS? NUM DOT NUM;
+NUM: '-'? [0-9]+ ('.' [0-9]+)?;
 fragment ESCAPED: '\\"' | '\\r' | '\\n';
 RAW_STRING: 'r"' (ESCAPED | ~('\n'|'\r'))*? '"';
 STRING: '"' (ESCAPED | ~('\n'|'\r'))*? '"';
 fragment REGEX_FLAGS: 'g' | 'i' | 'm' | 'u' | 'y';
 REGEX_LITERAL: '/' ~'/'+ '/' REGEX_FLAGS*;
 
-compilationUnit: topLevel*;
+compilationUnit: importDecl* topLevel*;
 
-topLevel: (functionDecl | ((stmt SEMI?)+));
-
-block:
-    CURLY_L (stmt SEMI?)* CURLY_R
-    | stmt SEMI?
+importDecl: 'import' ('[' (names+=ID ',')* names+=ID ']' 'of') importSource ('as' alias=ID)?;
+importSource:
+    STRING #StringSource
+    | '<' source=ID '>' #GlobalSource
 ;
 
-functionDecl: FN name=ID functionBody;
-functionBody: PAREN_L ((paramSpec COMMA)* paramSpec)? PAREN_R (COLON type)? (block | (ARROW expr));
-argSpec: ((expr COMMA)* expr)?;
-paramSpec: ID (COLON type)?;
+topLevel: (functionDecl | ((stmt ';'?)+));
+
+block:
+    '{' (stmt ';'?)* '}'
+    | stmt ';'?
+;
+
+functionDecl: 'fn' name=ID functionBody;
+functionBody: '(' ((paramSpec ',')* paramSpec)? ')' (':' type)? (block | ('=>' expr));
+argSpec: ((expr ',')* expr)?;
+paramSpec: ID (':' type)?;
 
 type: name=ID;
 
@@ -76,35 +48,38 @@ stmt:
     | retStmt
 ;
 
-assignStmt: left=expr EQUALS right=expr;
+// TODO: More assignment operators
+assignStmt: left=expr '=' right=expr;
 exprStmt: expr;
-forStmt: FOR PAREN_L vardeclStmt SEMI expr SEMI stmt PAREN_R block;
-foreachStmt: FOR PAREN_L type? ID COLON expr PAREN_R block;
-retStmt: RET expr;
-vardeclStmt: (((CONST | LET) type?)|((CONST|LET)? type)) ID EQUALS expr;
+forStmt: 'for' '(' vardeclStmt ';' expr ';' stmt ')' block;
+foreachStmt: 'for' '(' type? ID ':' expr ')' block;
+retStmt: 'ret' expr;
+vardeclStmt: (((CONST | LET) type?)|((CONST|LET)? type)) ID '=' expr;
 
-dictionaryLiteral: CURLY_L ((dictionaryPair COMMA)* dictionaryPair)? CURLY_R;
+dictionaryLiteral: '{' ((dictionaryPair ',')* dictionaryPair)? '}';
 dictionaryPair:
     ID
-    | (ID|STRING|RAW_STRING) COLON expr
+    | (ID|STRING|RAW_STRING) ':' expr
 ;
 
 expr:
-    requestMethod expr #RequestExpr
+    requestMethod=('head' | 'get' | 'post' | 'put' | 'patch' | 'delete') expr #RequestExpr
     | ID #IdExpr
-    | INT #IntegerExpr
-    | DOUBLE #DoubleExpr
-    | SQUARE_L ((expr COMMA)* expr)? SQUARE_R #ArrayLiteralExpr
-    | target=expr SQUARE_L indexer=expr SQUARE_R #IndexerExpr
+    | NUM #NumExpr
+    | '[' ((expr ',')* expr)? ']' #ArrayLiteralExpr
+    | target=expr '[' indexer=expr ']' #IndexerExpr
     | STRING #StringLiteralExpr
     | RAW_STRING #RawStringLiteralExpr
     | REGEX_LITERAL #RegexLiteralExpr
     | dictionaryLiteral #DictionaryLiteralExpr
-    | expr PAREN_L argSpec PAREN_R #CallExpr
-    | expr (TIMES | PLUS | MINUS | QUESTION) expr #BinaryExpr
-    | NEW type PAREN_L argSpec PAREN_R #NewExpr
+    | expr '(' argSpec ')' #CallExpr
+    | expr '*' expr #TimesExpr
+    | expr '+' expr #ConcatExpr
+    | expr '-' expr #SubtractExpr
+    | expr '?' expr #QueryExpr
+    | 'new' type '(' argSpec ')' #NewExpr
     | type #TypeExpr
-    | expr DOT ID #MemberExpr
+    | expr '.' ID #MemberExpr
     | functionBody #FunctionExpr
-    | PAREN_L expr PAREN_R #NestedExpr
+    | '(' expr ')' #NestedExpr
 ;

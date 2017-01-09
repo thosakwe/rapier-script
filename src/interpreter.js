@@ -2,7 +2,7 @@ import { RapierScriptVisitor } from './grammar/RapierScriptVisitor';
 import Scope from './scope';
 
 /**
- * @property scope {Scope}
+ * @property {Scope} scope
  */
 export default class RapierInterpreter extends RapierScriptVisitor {
     constructor() {

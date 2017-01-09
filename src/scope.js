@@ -1,12 +1,14 @@
+import RapierObject from './analysis/object';
 import Symbol from './symbol';
 
 /**
- * @property parent {Scope}
- * @property symbols {Array<Symbol>}
+ * @property {Scope} parent
+ * @property {Array.<Symbol>} symbols
  */
 export default class Scope {
     /**
-     * @param parent {Scope}
+     * @param {Scope} parent
+     * @property {Array.<Symbol>} symbols
      */
     constructor(parent, symbols = []) {
         this.parent = parent;
@@ -14,7 +16,7 @@ export default class Scope {
     }
 
     /**
-     * @param key {string}
+     * @param {string} key
      * @returns {Symbol}
      */
     findOrCreate(key) {
@@ -37,7 +39,7 @@ export default class Scope {
     }
 
     /**
-     * @param key {string}
+     * @param {string} key
      * @returns {object}
      */
     get(key) {
@@ -49,7 +51,7 @@ export default class Scope {
     }
 
     /**
-     * @param key {string}
+     * @param {string} key
      * @returns {Symbol}
      */
     getSymbol(key) {
@@ -62,8 +64,8 @@ export default class Scope {
     }
 
     /**
-     * @param key {string}
-     * @param value {string}
+     * @param {string} key
+     * @param {RapierObject} value
      * @returns {Scope}
      */
     set(key, value) {
@@ -72,8 +74,8 @@ export default class Scope {
     }
 
     /**
-     * @param key {string}
-     * @param value {string}
+     * @param {string} key
+     * @param {RapierObject} value
      * @returns {Symbol}
      */
     setSymbol(key, value) {
